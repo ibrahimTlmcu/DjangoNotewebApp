@@ -1,0 +1,57 @@
+
+{% extends 'base/main.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> <!-- CSS dosyasının yolunu belirtiyoruz -->
+  <title>Your Todo List App</title>
+</head>
+<body>
+  <div class="header-bar">
+    <div>
+      <h1>Merhaba {{request.user}}</h1>
+      <h3 style="margin: 0"><i>{{count}}</i> bekleyen görevin var !</h3>
+    </div>
+  </div>
+
+  {% if request.user.is_authenticated %}
+  <br>
+  <a class="log" href="{% url 'logout' %}">Logout</a>
+  {% else %}
+  <a href="{% url 'login' %}">Login</a>
+  {% endif %}
+  <hr>
+  <h1>Yapilacaklar Listesi {{color}}</h1>
+  <a class="add"  href="{%url 'task-create' %}">Add task</a>
+  <div class="task-items-wrapper">
+    
+    
+
+  <table>
+    <tr>
+      <th>Gorevler</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+      <td>{{ task.title }}</td>
+      <td class="view"><a href="{% url 'task' task.id %}" type="button">Goruntule</a></td>
+      <td class="edit"><a href="{% url 'task-update' task.id %}"type="button" >Duzenle</a></td>
+      <td class="delete"><a href="{% url 'task-delete' task.id %}"type="button">Sil</a></td>
+    </tr>
+    {% empty %}
+    <h3>No items in list</h3>
+    {% endfor %}
+  </table>
+</body>
+</html>
+<style>
+    
+</style>
+
+{% endblock content %}

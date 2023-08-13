@@ -1,0 +1,69 @@
+
+<br>
+<br>
+
+<form method="POST">
+    {% csrf_token %}
+    <p>Postu silmek istediginizden emin misiniz</p>
+    <input type="submit" value="Delete">
+<br>
+<br>
+
+    <a class="don" href="{% url 'tasks'%}">Geri Don</a>
+<style>
+        body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+form {
+  margin-top: 20px;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+input[type="submit"]{
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.don {
+  background-color: #1dd855;
+  color: #ffffff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+    </style>
+</form>
